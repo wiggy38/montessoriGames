@@ -15,7 +15,7 @@ class DbConnect {
         $config = new Config();
         // Connecting to mysql database
         $this->conn = new mysqli($config::DB_HOST, $config::DB_USERNAME, $config::DB_PASSWORD, $config::DB_NAME);
-        mysqli_set_charset($this->conn, "latin1");
+        mysqli_set_charset($this->conn, "utf8");
         
         // Check for database connection error
         if (mysqli_connect_errno()) {

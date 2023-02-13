@@ -36,7 +36,7 @@
 
     <main>
         <div id="search-box" class="search-container">
-            <input id="search-input" type="text" placeholder="Search games..." />
+            <input id="search-input" type="text" placeholder="Entrer un mot clé..." />
             <button id="search-button">Chercher</button>
         </div>
 
@@ -84,7 +84,7 @@
                     <th>Skill Developed</th>
                     <!--th>How to Play</th-->
                     <!--th>Materials Needed</th-->
-                    <th>Difficulty Score</th>
+                    <!--th>Difficulty Score</th-->
                 </tr>
             </thead>
             <tbody>
@@ -97,7 +97,7 @@
                         <td><?php echo $game['skill_developped']; ?></td>
                         <!--td><?php echo $game['how_to_play']; ?></td-->
                         <!--td><?php echo $game['materials_needed']; ?></td-->
-                        <td><?php echo $game['difficulty_score']; ?></td>
+                        <!--td><?php echo $game['difficulty_score']; ?></td-->
                     </tr>
                 <?php endforeach; ?>
             </tbody>
