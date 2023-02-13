@@ -240,11 +240,11 @@ ul {
     align-items: center;
     padding: 20px;
   }
-  label {
+  .form-container label {
     font-weight: bold;
     margin-top: 20px;
   }
-  input[type="text"], textarea {
+  .form-container input[type="text"], textarea {
     width: 300px;
     height: 40px;
     font-size: 16px;
@@ -253,10 +253,10 @@ ul {
     border: 1px solid gray;
     border-radius: 5px;
   }
-  textarea {
+  .form-container textarea {
     height: 100px;
   }
-  input[type="submit"] {
+  .form-container input[type="submit"] {
     width: 150px;
     height: 40px;
     font-size: 18px;
