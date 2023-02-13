@@ -61,20 +61,19 @@ class DbOperation
     * The read operation
     * When this method is called it is returning all the existing records in the database
     */
-    function findGames($searchTerm)
+    function getRandomFeaturedGames()
     {
 
         $query = "SELECT id, name, description, game_type, age_range, skill_developped, how_to_play, materials_needed, difficulty_score 
                     FROM games 
-                    WHERE name LIKE ? OR description LIKE ? OR game_type LIKE ?";
+                    ORDER BY RAND() 
+                    LIMIT 5";
         $stmt = $this->conn->prepare($query);
 
         if (!$stmt) {
             die("Statement preparation failed: " . $this->conn->error);
         }
 
-        $searchTermValue = "%" . $searchTerm . "%";
-        $stmt->bind_param("sss", $searchTermValue, $searchTermValue, $searchTermValue);
         if (!$stmt->execute()) {
             die("Statement execution failed: " . $stmt->error);
         }
@@ -165,44 +164,37 @@ class DbOperation
     }
 
     
-    function findGameById($lang)
+    function findGameById($id)
     {
-
-        $query = "SELECT * FROM games LIMIT 5";
+        $query = "SELECT * FROM games WHERE id = ?";
         $stmt = $this->conn->prepare($query);
-
+    
         if (!$stmt) {
             die("Statement preparation failed: " . $this->conn->error);
         }
-
-        //$stmt->bind_param("s", $lang);
+    
+        $stmt->bind_param("i", $id);
         if (!$stmt->execute()) {
             die("Statement execution failed: " . $stmt->error);
         }
         $stmt->bind_result($id, $name, $description, $game_type, $age_range, $skill_developped, $how_to_play, $materials_needed, $difficulty_score);
- 
+     
         $stmt->fetch();
+    
+        $game = array();
+        $game['id'] = $id;
+        $game['name'] = $name;
+        $game['description'] = $description;
+        $game['game_type'] = $game_type;
+        $game['age_range'] = $age_range;
+        $game['skill_developped'] = $skill_developped;
+        $game['how_to_play'] = $how_to_play;
+        $game['materials_needed'] = $materials_needed;
+        $game['difficulty_score'] = $difficulty_score;
 
-        $games = array();
- 
-        while ($stmt->fetch()) {
-            $game = array();
-            $game['id'] = $id;
-            $game['name'] = $name;
-            $game['description'] = $description;
-            $game['game_type'] = $game_type;
-            $game['age_range'] = $age_range;
-            $game['skill_developped'] = $skill_developped;
-            $game['how_to_play'] = $how_to_play;
-            $game['materials_needed'] = $materials_needed;
-            $game['difficulty_score'] = $difficulty_score;
-            array_push($games, $game);
-        }
-
-        return $games[0];
-
+        return $game;
     }
-
+    
 
 
 }

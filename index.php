@@ -63,11 +63,14 @@
         <?php
         } else {
             // Call the getGames() method -->
-            $games = $db->getGames();
+            $games = $db->getRandomFeaturedGames();
+            ?>
+                <h1>Jeux Montessori</h1>
+            <?php
         }
 
         $quote = $db->getRandomQuote("French");
-        echo $quote;
+        
         ?>
 
         <!-- Loop through the games data and display it -->
@@ -125,7 +128,7 @@
                 e.preventDefault();
 
                 var searchTerm = $("#search-input").val();
-                alert(searchTerm);
+                
                 $.ajax({
                     type: "post",
                     url: "search.php",

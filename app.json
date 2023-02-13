@@ -1,0 +1,7 @@
+{
+    "name": "Montessori Games",
+    "description": "A Montessori games directory for children providing several Montessori activities",
+    "repository": "https://github.com/heroku/node-js-getting-started",
+    "logo": "https://node-js-sample.herokuapp.com/node.png",
+    "keywords": ["node", "express", "static"]
+  }

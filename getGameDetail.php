@@ -8,5 +8,6 @@ $game = $db->findGameById($id);
 var_dump($game);
 // Return the results as JSON
 header("Content-Type: application/json");
-echo json_encode($game);
+echo $game;
+exit;
 ?>

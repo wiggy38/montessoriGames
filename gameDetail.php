@@ -6,11 +6,12 @@
         var gameId = getQueryVariable("id");
         console.log(gameId);
         $.ajax({
-          type: "GET",
-          url: "getGameDetail.php",
+            type: "get",
+            url: "getGameDetail.php",
           data: { id: gameId },
-          dataType: "json",
+
           success: function(game) {
+            alert(game);
             $("#name").text(game.name);
             $("#description").text(game.description);
             $("#game_type").text(game.game_type);
@@ -19,9 +20,15 @@
             $("#how_to_play").text(game.how_to_play);
             $("#materials_needed").text(game.materials_needed);
             $("#difficulty_score").text(game.difficulty_score);
-          }
+          },
+      error: function (xhr, ajaxOptions, thrownError) {
+        alert(xhr.status);
+        alert(thrownError);
+      }
+          
+          
         });
-
+alert("game");
         function getQueryVariable(variable) {
           var query = window.location.search.substring(1);
           var vars = query.split("&");
