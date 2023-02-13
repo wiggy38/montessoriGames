@@ -128,7 +128,7 @@
 
 
     <footer>
-        <p>Jeux Montessori | &copy; 2023 - <a href="https://storyteed.com/fr/category/education-fr/">Montessori Blog</a></p>
+        <p>Jeux Montessori | &copy; 2023 - <a href="https://storyteed.com/fr/category/methode-montessori/">Montessori Blog</a></p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>

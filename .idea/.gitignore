@@ -7,4 +7,5 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 # Database settings
-Constants.php
+/Constants.php
+/Config.php
