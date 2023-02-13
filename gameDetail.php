@@ -42,11 +42,11 @@
       });
 
       function score(value) {
-        
-    var difficultyScore = value; // replace with actual score
-    var maxDifficulty = 10; // replace with maximum possible score
-    //document.getElementById("difficulty_score").innerHTML = difficultyScore;
-    document.getElementById("bar").style.width = (difficultyScore / maxDifficulty * 100) + "%";
+
+        var difficultyScore = value; // replace with actual score
+        var maxDifficulty = 10; // replace with maximum possible score
+        //document.getElementById("difficulty_score").innerHTML = difficultyScore;
+        document.getElementById("bar").style.width = (difficultyScore / maxDifficulty * 100) + "%";
       }
 
       function getQueryVariable(variable) {
@@ -72,72 +72,70 @@
     </div>
     <nav>
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contacts</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="https://storyteed.com/fr/category/education-fr/">Blog</a></li>
       </ul>
     </nav>
     <i class="fas fa-bars"></i>
     <div class="dropdown-menu">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contacts</a></li>
+        <li><a href="/">Accueil</a></li>
+        <li><a href="https://storyteed.com/fr/category/education-fr/">Blog</a></li>
       </ul>
     </div>
   </header>
 
   <main>
-    
-  <style>
-  .gamedetails {
-    width: 80%;
-    margin: 0 auto;
-    text-align: left;
-  }
-  
-  h3 {
-    font-size: 20px;
-    font-weight: bold;
-    margin-top: 30px;
-  }
-  
-  span {
-    font-size: 18px;
-  }
-  
-  strong {
-    font-size: 16px;
-    margin-top: 20px;
-  }
-</style>
-<div class="gamedetails">
-  <h1 id="name"></h1>
-  <h3>Description:</h3>
-  <p><span id="description"></span></p>
-  <h3>Game Type:</h3>
-  <p><span id="game_type"></span></p>
-  <h3>Age Range:</h3>
-  <p><span id="age_range"></span></p>
-  <h3>Skill Developed:</h3>
-  <p><span id="skill_developped"></span></p>
-  <h3>How to Play:</h3>
-  <p><span id="how_to_play"></span></p>
-  <h3>Materials Needed:</h3>
-  <p><span id="materials_needed"></span></p>
-  <h3>Difficulty Score:</h3>
-  <!--p><span id="difficulty_score"></span></p-->
-  <div id="difficulty_score"></div>
-  <div class="bar-chart">
-    <div class="bar" id="bar"></div>
-  </div>
-</div>
+
+    <style>
+      .gamedetails {
+        width: 80%;
+        margin: 0 auto;
+        text-align: left;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      span {
+        font-size: 18px;
+      }
+
+      strong {
+        font-size: 16px;
+        margin-top: 20px;
+      }
+    </style>
+    <div class="gamedetails">
+      <h1 id="name"></h1>
+      <h3>Description:</h3>
+      <p><span id="description"></span></p>
+      <h3>Type de jeux:</h3>
+      <p><span id="game_type"></span></p>
+      <h3>Pour quel tranche d'âge ?</h3>
+      <p><span id="age_range"></span></p>
+      <h3>Quelles sont les aptitudes développées ?</h3>
+      <p><span id="skill_developped"></span></p>
+      <h3>Comment faire ?</h3>
+      <p><span id="how_to_play"></span></p>
+      <h3>De quoi ai-je besoin ?</h3>
+      <p><span id="materials_needed"></span></p>
+      <h3>Difficulté:</h3>
+      <!--p><span id="difficulty_score"></span></p-->
+      <div id="difficulty_score"></div>
+      <div class="bar-chart">
+        <div class="bar" id="bar"></div>
+      </div>
+    </div>
 
   </main>
 
 
   <footer>
-    <p>&copy; Jeux Montessori 2023</p>
+    <p>Jeux Montessori | &copy; 2023 - <a href="https://storyteed.com/fr/category/education-fr/">Montessori Blog</a></p>
   </footer>
 
 </body>

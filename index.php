@@ -19,17 +19,15 @@
         </div>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="https://storyteed.com/fr/category/education-fr/">Blog</a></li>
             </ul>
         </nav>
         <i class="fas fa-bars"></i>
         <div class="dropdown-menu">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Blog</a></li>
-                <li><a href="#">Contacts</a></li>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="https://storyteed.com/fr/category/education-fr/">Blog</a></li>
             </ul>
         </div>
     </header>
@@ -41,11 +39,11 @@
         </div>
 
         <div class="quick-links">
-            <span><a title="Activités et Jeux Montessori pour enfants 0-1 an" href="/?s=jeux-montessori-0-1">Jeux Montessori 0 à 1 an</a></span> | 
-            <span><a title="Activités et Jeux Montessori pour enfants 0-3 ans" href="/?s=jeux-montessori-0-3">Jeux Montessori 0 à 3 ans</a></span> | 
-            <span><a title="Activités et Jeux Montessori pour enfants 2-4 ans" href="/?s=jeux-montessori-2-4">Jeux Montessori 2 à 4 ans</a></span> | 
-            <span><a title="Activités et Jeux Montessori pour enfants 2-6 ans" href="/?s=jeux-montessori-2-6">Jeux Montessori 2 à 6 ans</a></span> | 
-            <span><a title="Activités et Jeux Montessori pour enfants 3-5 ans" href="/?s=jeux-montessori-3-5">Jeux Montessori 3 à 5 ans</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 0-1 an" href="/?s=jeux-montessori-0-1">Jeux Montessori 0 à 1 an</a></span> |
+            <span><a title="Activités et Jeux Montessori pour enfants 0-3 ans" href="/?s=jeux-montessori-0-3">Jeux Montessori 0 à 3 ans</a></span> |
+            <span><a title="Activités et Jeux Montessori pour enfants 2-4 ans" href="/?s=jeux-montessori-2-4">Jeux Montessori 2 à 4 ans</a></span> |
+            <span><a title="Activités et Jeux Montessori pour enfants 2-6 ans" href="/?s=jeux-montessori-2-6">Jeux Montessori 2 à 6 ans</a></span> |
+            <span><a title="Activités et Jeux Montessori pour enfants 3-5 ans" href="/?s=jeux-montessori-3-5">Jeux Montessori 3 à 5 ans</a></span> |
             <span><a title="Activités et Jeux Montessori pour enfants 3-7 ans" href="/?s=jeux-montessori-3-7">Jeux Montessori 3 à 7 ans</a></span>
         </div>
 
@@ -57,7 +55,7 @@
         require_once 'Utils.php';
         // Create new instance DbOperation
         $db = new DbOperation();
-        
+
         // Current server url
         $current_url = $_SERVER['REQUEST_URI'];
 
@@ -75,13 +73,13 @@
         } else {
             // Call the getGames() method -->
             $games = $db->getRandomFeaturedGames();
-            ?>
-                <h1>Jeux Montessori</h1>
-            <?php
+        ?>
+            <h1>Jeux Montessori</h1>
+        <?php
         }
 
         $quote = $db->getRandomQuote("French");
-        
+
         ?>
 
         <!-- Loop through the games data and display it -->
@@ -129,7 +127,7 @@
 
 
     <footer>
-        <p>&copy; Jeux Montessori 2023</p>
+        <p>Jeux Montessori | &copy; 2023 - <a href="https://storyteed.com/fr/category/education-fr/">Montessori Blog</a></p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="script.js"></script>
@@ -139,7 +137,7 @@
                 e.preventDefault();
 
                 var searchTerm = $("#search-input").val();
-                
+
                 $.ajax({
                     type: "post",
                     url: "search.php",
@@ -147,13 +145,11 @@
                         searchTerm: searchTerm
                     },
                     success: function(response) {
-                        console.log(response);
-                        alert(response);
                         //var games = JSON.parse(response);
 
                         // Clear the table
                         $(".montessori-game-list tbody").empty();
-                        console.log(response);
+
                         // Loop through the games data and populate the table
                         response.forEach(function(game) {
                             $(".montessori-game-list tbody").append(

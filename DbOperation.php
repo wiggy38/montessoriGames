@@ -239,9 +239,9 @@ class DbOperation
         $game['how_to_play'] = $how_to_play;
         $game['materials_needed'] = $materials_needed;
         $game['difficulty_score'] = $difficulty_score;
-        $utf8_game = array_map('utf8_encode', $game);
+        //$utf8_game = array_map('utf8_encode', $game);
     
-        return $utf8_game;
+        return $game;
     }
     
     
@@ -306,5 +306,3 @@ class DbOperation
     
 
 }
-
-?>
