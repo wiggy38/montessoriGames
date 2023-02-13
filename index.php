@@ -65,6 +65,7 @@
             $games = $db->findGamesByAgeRange(Utils::getLastThreeCharacters($_GET['s']));
         ?>
             <h1>
+                Activités & 
                 <?php
                 echo Utils::add_els_or_ans(Utils::replace_second_last_char(ucwords(str_replace("-", " ", $_GET['s']))));
                 ?>
@@ -74,7 +75,7 @@
             // Call the getGames() method -->
             $games = $db->getRandomFeaturedGames();
         ?>
-            <h1>Jeux Montessori</h1>
+            <h1>Activités & Jeux Montessori</h1>
         <?php
         }
 
