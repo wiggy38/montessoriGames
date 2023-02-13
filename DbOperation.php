@@ -6,6 +6,7 @@ class DbOperation
  
     function __construct()
     {
+        echo '/Constants.php';
         require_once dirname(__FILE__) . '/Constants.php';
         require_once dirname(__FILE__) . '/DbConnect.php';
         echo '/DbConnect.php';
