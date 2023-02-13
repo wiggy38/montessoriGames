@@ -24,6 +24,7 @@ class DbConnect {
         
         // returing connection resource
         return $this->conn;
+        
     }
 }
  

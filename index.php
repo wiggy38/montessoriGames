@@ -40,6 +40,15 @@
             <button id="search-button">Chercher</button>
         </div>
 
+        <div class="quick-links">
+            <span><a title="Activités et Jeux Montessori pour enfants 0-1 an" href="/?s=jeux-montessori-0-1">Jeux Montessori 0 à 1 an</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 0-3 ans" href="/?s=jeux-montessori-0-3">Jeux Montessori 0 à 3 ans</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 2-4 ans" href="/?s=jeux-montessori-2-4">Jeux Montessori 2 à 4 ans</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 2-6 ans" href="/?s=jeux-montessori-2-6">Jeux Montessori 2 à 6 ans</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 3-5 ans" href="/?s=jeux-montessori-3-5">Jeux Montessori 3 à 5 ans</a></span> | 
+            <span><a title="Activités et Jeux Montessori pour enfants 3-7 ans" href="/?s=jeux-montessori-3-7">Jeux Montessori 3 à 7 ans</a></span>
+        </div>
+
         <!-- Create an instance of the DbConnect class -->
         <?php
         // Include DbOperation
@@ -149,9 +158,9 @@
                         response.forEach(function(game) {
                             $(".montessori-game-list tbody").append(
                                 "<tr>" +
-                                "<td>" +
+                                "<td><a href=\"gameDetail.php?id=<?php echo $game['id']; ?>\">" +
                                 game.name +
-                                "</td>" +
+                                "</a></td>" +
                                 "<td>" +
                                 game.game_type +
                                 "</td>" +

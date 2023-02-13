@@ -6,14 +6,11 @@ class DbOperation
  
     function __construct()
     {
-        echo '1';
         require_once dirname(__FILE__) . '/Constants.php';
         require_once dirname(__FILE__) . '/DbConnect.php';
-        echo '2';
         $db = new DbConnect();
-        echo '3';
+
         $this->conn = $db->connect();
-        echo '4';
     }
  
     /*
