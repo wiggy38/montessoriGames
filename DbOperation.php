@@ -8,6 +8,7 @@ class DbOperation
     {
         require_once dirname(__FILE__) . '/Constants.php';
         require_once dirname(__FILE__) . '/DbConnect.php';
+        echo '/DbConnect.php';
         $db = new DbConnect();
         $this->conn = $db->connect();
     }
