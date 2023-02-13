@@ -209,3 +209,22 @@ ul {
   .emoji {
     font-size: 32px;
   }
+
+  .gamedetails p {
+    padding: 10px 0;
+  }
+
+  .bar-chart {
+    display: flex;
+    height: 20px;
+    width: 100%;
+    background-color: lightgray;
+    /*border-radius: 10px;*/
+  }
+  .bar {
+    height: 100%;
+    width: 0;
+    background-color: red;
+    /*border-radius: 10px;*/
+    transition: width 0.5s ease-in-out;
+  }

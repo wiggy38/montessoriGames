@@ -9,5 +9,12 @@ $games = $db->findGames($searchTerm);
 
 // Return the results as JSON
 header("Content-Type: application/json");
-echo json_encode($games);
+
+$json = json_encode($games);
+if ($json === false) {
+    echo json_last_error_msg();
+}
+echo $json;
+
+
 ?>
