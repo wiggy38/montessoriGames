@@ -42,6 +42,7 @@
 
         <!-- Create an instance of the DbConnect class -->
         <?php
+        echo 'MY MONTESSORI GAMES APPLICATION';
         // Include DbOperation
         require_once 'DbOperation.php';
         // Include Utils
