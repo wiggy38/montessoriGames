@@ -42,16 +42,12 @@
 
         <!-- Create an instance of the DbConnect class -->
         <?php
-        echo 'A';
         // Include DbOperation
         require_once 'DbOperation.php';
-        echo 'B';
         // Include Utils
         require_once 'Utils.php';
-        echo 'C';
         // Create new instance DbOperation
         $db = new DbOperation();
-        echo 'D';
         
         // Current server url
         $current_url = $_SERVER['REQUEST_URI'];
