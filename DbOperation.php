@@ -307,23 +307,29 @@ class DbOperation
     }
     
     function updateData($game) {
+        echo '1';
         // Prepare the update statement
         if($game['id']!=null) {
             $query = "INSERT INTO games (name, description, game_type, min_age, max_age, age_range, skill_developped, how_to_play, materials_needed, difficulty_score)
                         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
         else{
+            echo '2';
             $query = "UPDATE games SET name = ?, description = ?, game_type = ?, min_age = ?, max_age = ?, age_range = ?, skill_developped = ?, how_to_play = ?, materials_needed = ?, difficulty_score = ? WHERE id = ?";
         }
         
     
+echo '3';
         // Bind parameters
         $stmt = $this->conn->prepare($query);
 
+        echo '4';
         $stmt->bind_param("sssiiisssii", $game['name'], $game['description'], $game['game_type'], $game['min_age'], $game['max_age'], $game['age_range'], $game['skill_developped'], $game['how_to_play'], $game['materials_needed'], $game['difficulty_score'], $game['id']);
     
+echo '5';
         // Execute the statement
         if ($stmt->execute()) {
+            echo '6';
             return true;
         } else {
             die("Statement execution failed: " . $stmt->error);
