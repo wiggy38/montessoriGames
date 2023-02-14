@@ -66,7 +66,7 @@ class DbOperation
 
         $query = "SELECT id, name, description, game_type, age_range, skill_developped, how_to_play, materials_needed, difficulty_score 
                     FROM games 
-                    WHERE name LIKE ?";
+                    WHERE name LIKE ? OR skill_developped LIKE ? OR description LIKE ?";
         $stmt = $this->conn->prepare($query);
 
         if (!$stmt) {
@@ -74,7 +74,7 @@ class DbOperation
         }
 
         $searchTermValue = "%" . $searchTerm . "%";
-        $stmt->bind_param("s", $searchTermValue);
+        $stmt->bind_param("sss", $searchTermValue, $searchTermValue, $searchTermValue);
         if (!$stmt->execute()) {
             die("Statement execution failed: " . $stmt->error);
         }
