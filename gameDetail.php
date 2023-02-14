@@ -24,12 +24,12 @@
 
         success: function(game) {
           $("#name").text(game.name);
-          $("#description").text(game.description);
+          $("#description").html(game.description);
           $("#game_type").text(game.game_type);
           $("#age_range").text(game.age_range);
           $("#skill_developped").text(game.skill_developped);
-          $("#how_to_play").text(game.how_to_play);
-          $("#materials_needed").text(game.materials_needed);
+          $("#how_to_play").html(game.how_to_play);
+          $("#materials_needed").html(game.materials_needed);
           //$("#difficulty_score").text(game.difficulty_score);
           score(game.difficulty_score);
         },
@@ -100,24 +100,20 @@
         margin-top: 30px;
       }
 
-      span {
-        font-size: 18px;
-      }
-
       strong {
         font-size: 16px;
         margin-top: 20px;
       }
     </style>
 
-<div class="quick-links">
-    <span><a title="Activités et Jeux Montessori pour enfants 0-1 an" href="/?s=jeux-montessori-0-1">Jeux Montessori 0 à 1 an</a></span> |
-    <span><a title="Activités et Jeux Montessori pour enfants 0-3 ans" href="/?s=jeux-montessori-0-3">Jeux Montessori 0 à 3 ans</a></span> |
-    <span><a title="Activités et Jeux Montessori pour enfants 2-4 ans" href="/?s=jeux-montessori-2-4">Jeux Montessori 2 à 4 ans</a></span> |
-    <span><a title="Activités et Jeux Montessori pour enfants 2-6 ans" href="/?s=jeux-montessori-2-6">Jeux Montessori 2 à 6 ans</a></span> |
-    <span><a title="Activités et Jeux Montessori pour enfants 3-5 ans" href="/?s=jeux-montessori-3-5">Jeux Montessori 3 à 5 ans</a></span> |
-    <span><a title="Activités et Jeux Montessori pour enfants 3-7 ans" href="/?s=jeux-montessori-3-7">Jeux Montessori 3 à 7 ans</a></span>
-</div>
+    <div class="quick-links">
+      <span><a title="Activités et Jeux Montessori pour enfants 0-1 an" href="/?s=jeux-montessori-0-1">Jeux Montessori 0 à 1 an</a></span> |
+      <span><a title="Activités et Jeux Montessori pour enfants 0-3 ans" href="/?s=jeux-montessori-0-3">Jeux Montessori 0 à 3 ans</a></span> |
+      <span><a title="Activités et Jeux Montessori pour enfants 2-4 ans" href="/?s=jeux-montessori-2-4">Jeux Montessori 2 à 4 ans</a></span> |
+      <span><a title="Activités et Jeux Montessori pour enfants 2-6 ans" href="/?s=jeux-montessori-2-6">Jeux Montessori 2 à 6 ans</a></span> |
+      <span><a title="Activités et Jeux Montessori pour enfants 3-5 ans" href="/?s=jeux-montessori-3-5">Jeux Montessori 3 à 5 ans</a></span> |
+      <span><a title="Activités et Jeux Montessori pour enfants 3-7 ans" href="/?s=jeux-montessori-3-7">Jeux Montessori 3 à 7 ans</a></span>
+    </div>
 
     <div class="gamedetails">
       <h1 id="name"></h1>

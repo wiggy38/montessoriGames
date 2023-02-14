@@ -11,41 +11,65 @@
     <title>Jeux Montessori 0-1 pour les enfants - Des idées de jeux éducatifs pour les tout-petits</title>
     <meta name="description" content="Découvrez les meilleurs jeux Montessori pour les enfants âgés de 0 à 1 an. Des idées de jeux éducatifs pour stimuler leur développement." />
 
-    <style>
-      .form-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 20px;
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+    tinymce.init({
+      selector: 'textarea',
+      height: 200,
+      plugins: 'advlist autolink lists link image charmap print preview anchor',
+      toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | bullist numlist outdent indent | link image',
+    });
+  </script>
+
+<script>
+    $(document).ready(function() {
+      var gameId = getQueryVariable("id");
+
+      $.ajax({
+        type: "get",
+        url: "getGameDetail.php",
+        data: {
+          id: gameId
+        },
+        success: function(game) {
+            $.each(game, function(key, value) {
+                $('#' + key).val(value);
+            });
+        },
+        error: function(xhr, ajaxOptions, thrownError) {
+          alert(xhr.status);
+          alert(thrownError);
+        }
+
+
+      });
+
+      function score(value) {
+
+        var difficultyScore = value; // replace with actual score
+        var maxDifficulty = 10; // replace with maximum possible score
+        //document.getElementById("difficulty_score").innerHTML = difficultyScore;
+        document.getElementById("bar").style.width = (difficultyScore / maxDifficulty * 100) + "%";
       }
-      label {
-        font-weight: bold;
-        margin-top: 20px;
+
+      function getQueryVariable(variable) {
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+          var pair = vars[i].split("=");
+          console.log(pair[1]);
+          if (pair[0] == variable) {
+            return pair[1];
+          }
+        }
+        return false;
       }
-      input[type="text"], textarea {
-        width: 300px;
-        height: 40px;
-        font-size: 16px;
-        padding: 10px;
-        margin-top: 10px;
-        border: 1px solid gray;
-        border-radius: 5px;
-      }
-      textarea {
-        height: 100px;
-      }
-      input[type="submit"] {
-        width: 150px;
-        height: 40px;
-        font-size: 18px;
-        margin-top: 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: lightblue;
-        color: white;
-        cursor: pointer;
-      }
-    </style>
+    });
+  </script>
+
+
+
 
 </head>
 
@@ -72,38 +96,48 @@
     <main>
     <div class="form-container">
       <h2>Insert Game Data</h2>
-      <form action="insert.php" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
-        
-        <label for="description">Description:</label>
-        <input type="text" id="description" name="description" required><br><br>
-        
-        <label for="game_type">Game Type:</label>
-        <input type="text" id="game_type" name="game_type" required><br><br>
-        
-        <label for="min_age">Minimum Age:</label>
-        <input type="number" id="min_age" name="min_age" required><br><br>
-        
-        <label for="max_age">Maximum Age:</label>
-        <input type="number" id="max_age" name="max_age" required><br><br>
-        
-        <label for="age_range">Age Range:</label>
-        <input type="text" id="age_range" name="age_range" required><br><br>
-        
-        <label for="skill_developped">Skill Developed:</label>
-        <input type="text" id="skill_developped" name="skill_developped" required><br><br>
-        
-        <label for="how_to_play">How to Play:</label>
-        <textarea id="how_to_play" name="how_to_play" required></textarea><br><br>
-        
-        <label for="materials_needed">Materials Needed:</label>
-        <textarea id="materials_needed" name="materials_needed" required></textarea><br><br>
-        
-        <label for="difficulty_score">Difficulty Score:</label>
-        <input type="number" id="difficulty_score" name="difficulty_score" required><br><br>
-      </form>
+      <form id="gameForm" class="form-container" action="insert.php" method="post">
+      <input type="hidden" id="id" name="id">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required><br><br>
+      
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required></textarea><br><br>
+      
+      <label for="game_type">Game Type:</label>
+      <input type="text" id="game_type" name="game_type" required><br><br>
+      
+      <label for="min_age">Minimum Age:</label>
+      <input type="number" id="min_age" name="min_age" required><br><br>
+      
+      <label for="max_age">Maximum Age:</label>
+      <input type="number" id="max_age" name="max_age" required><br><br>
+      
+      <label for="age_range">Age Range:</label>
+      <input type="text" id="age_range" name="age_range" required><br><br>
+      
+      <label for="skill_developped">Skill Developed:</label>
+      <input type="text" id="skill_developped" name="skill_developped" required><br><br>
+      
+      <label for="how_to_play">How to Play:</label>
+      <textarea id="how_to_play" name="how_to_play" required></textarea><br><br>
+      
+      <label for="materials_needed">Materials Needed:</label>
+      <textarea id="materials_needed" name="materials_needed" required></textarea><br><br>
+      
+      <label for="difficulty_score">Difficulty Score:</label>
+      <input type="number" id="difficulty_score" name="difficulty_score" required><br><br>
+      
+      <input name="form_action" type="submit" value="Submit">
+    </form>
     </div>
+
+    
+    <!-- SUBMIT FORM -->
+    <div id="loader" style="display:none;">
+  <img src="loader.gif" alt="Loading..." />
+</div>
+
 
 
     </main>
@@ -113,53 +147,39 @@
         <p>Jeux Montessori | &copy; 2023 - <a href="https://storyteed.com/fr/category/methode-montessori/">Montessori Blog</a></p>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="script.js"></script>
     <script>
-        $(document).ready(function() {
-            $("#search-button").click(function(e) {
-                e.preventDefault();
+  document.getElementById("gameForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    showLoader();
+    submitForm();
+  });
 
-                var searchTerm = $("#search-input").val();
+  function submitForm() {
+    // collect form data and send it to the server
+    // or process the data locally
 
-                $.ajax({
-                    type: "post",
-                    url: "search.php",
-                    data: {
-                        searchTerm: searchTerm
-                    },
-                    success: function(response) {
-                        //var games = JSON.parse(response);
+    // for example:
+    const formData = new FormData(document.getElementById("gameForm"));
+    const xhr = new XMLHttpRequest();
+    xhr.open("POST", "insert.php", true);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+        hideLoader();
+        alert('done!');
+      }
+    };
+    xhr.send(formData);
+  }
 
-                        // Clear the table
-                        $(".montessori-game-list tbody").empty();
+  function showLoader() {
+    document.getElementById("loader").style.display = "block";
+  }
 
-                        // Loop through the games data and populate the table
-                        response.forEach(function(game) {
-                            $(".montessori-game-list tbody").append(
-                                "<tr>" +
-                                "<td><a href=\"gameDetail.php?id=<?php echo $game['id']; ?>\">" +
-                                game.name +
-                                "</a></td>" +
-                                "<td>" +
-                                game.game_type +
-                                "</td>" +
-                                "<td>" +
-                                game.skill_developped +
-                                "</td>" +
-                                "<td>" +
-                                game.difficulty_score +
-                                "</td>" +
-                                "</tr>"
-                            );
-                        });
-                    },
-                    error: function(jqXHR, textStatus, errorThrown) {
-                        console.log(textStatus, errorThrown);
-                    }
-                });
-            });
-        });
-    </script>
+  function hideLoader() {
+    document.getElementById("loader").style.display = "none";
+  }
+</script>
+
 </body>
 
 </html>

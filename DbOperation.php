@@ -232,8 +232,10 @@ class DbOperation
         $game = array();
         $game['id'] = $id;
         $game['name'] = $name;
-        $game['description'] = $description;
+        $game['description'] = html_entity_decode($description);
         $game['game_type'] = $game_type;
+        $game['min_age'] = $min_age;
+        $game['max_age'] = $max_age;
         $game['age_range'] = $age_range;
         $game['skill_developped'] = $skill_developped;
         $game['how_to_play'] = $how_to_play;
@@ -304,5 +306,29 @@ class DbOperation
         }
     }
     
+    function updateData($game) {
+        // Prepare the update statement
+        if($game['id']!=null) {
+            $query = "INSERT INTO games (name, description, game_type, min_age, max_age, age_range, skill_developped, how_to_play, materials_needed, difficulty_score)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        }
+        else{
+            $query = "UPDATE games SET name = ?, description = ?, game_type = ?, min_age = ?, max_age = ?, age_range = ?, skill_developped = ?, how_to_play = ?, materials_needed = ?, difficulty_score = ? WHERE id = ?";
+        }
+        
+    
+        // Bind parameters
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("sssiiisssii", $game['name'], $game['description'], $game['game_type'], $game['min_age'], $game['max_age'], $game['age_range'], $game['skill_developped'], $game['how_to_play'], $game['materials_needed'], $game['difficulty_score'], $game['id']);
+    
+        // Execute the statement
+        if ($stmt->execute()) {
+            return true;
+        } else {
+            die("Statement execution failed: " . $stmt->error);
+        }
+
+    }
 
 }
