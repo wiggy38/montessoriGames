@@ -324,8 +324,9 @@ echo '3';
         $stmt = $this->conn->prepare($query);
 
         echo '4';
-        $stmt->bind_param("sssiissssii", $game['name'], $game['description'], $game['game_type'], $game['min_age'], $game['max_age'], $game['age_range'], $game['skill_developped'], $game['how_to_play'], $game['materials_needed'], $game['difficulty_score'], $game['id']);
-    
+        if (!$stmt->bind_param("sssiissssii", $game['name'], $game['description'], $game['game_type'], $game['min_age'], $game['max_age'], $game['age_range'], $game['skill_developped'], $game['how_to_play'], $game['materials_needed'], $game['difficulty_score'], $game['id'])) {
+            die("Error binding parameters: " . $stmt->error);
+        }
 echo '5';
         // Execute the statement
         if ($stmt->execute()) {
