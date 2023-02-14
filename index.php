@@ -167,10 +167,6 @@
                                 "</td>" +
                                 "<td>" +
                                 game.skill_developped +
-                                "</td>" +
-                                "<td>" +
-                                game.difficulty_score +
-                                "</td>" +
                                 "</tr>"
                             );
                         });
