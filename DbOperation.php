@@ -158,14 +158,14 @@ class DbOperation
         $query .= "FROM games ";
         $query .= "WHERE min_age <= ? ";
         //$query .= ($max_age>0) ? " OR max_age >= ?" : "";
-        $query .= " OR (max_age > 0 AND max_age >= ?) OR (max_age = 0 AND max_age <= ?)";
+        $query .= "AND ((max_age > 0 AND max_age >= ?) OR (max_age = 0 AND max_age <= ?))";
         $stmt = $this->conn->prepare($query);
 
         if (!$stmt) {
             die("Statement preparation failed: " . $this->conn->error);
         }
 
-        $stmt->bind_param("ss", $min_age, $max_age);
+        $stmt->bind_param("sss", $min_age, $max_age, $max_age);
         if (!$stmt->execute()) {
             die("Statement execution failed: " . $stmt->error);
         }
