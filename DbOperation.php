@@ -310,12 +310,12 @@ class DbOperation
         echo '1';
         // Prepare the update statement
         if($game['id']!=null) {
-            $query = "INSERT INTO games (name, description, game_type, min_age, max_age, age_range, skill_developped, how_to_play, materials_needed, difficulty_score)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $query = "UPDATE games SET name = ?, description = ?, game_type = ?, min_age = ?, max_age = ?, age_range = ?, skill_developped = ?, how_to_play = ?, materials_needed = ?, difficulty_score = ? WHERE id = ?";
         }
         else{
-            echo '2';
-            $query = "UPDATE games SET name = ?, description = ?, game_type = ?, min_age = ?, max_age = ?, age_range = ?, skill_developped = ?, how_to_play = ?, materials_needed = ?, difficulty_score = ? WHERE id = ?";
+            $query = "INSERT INTO games (name, description, game_type, min_age, max_age, age_range, skill_developped, how_to_play, materials_needed, difficulty_score)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            echo '2';        
         }
         
     
