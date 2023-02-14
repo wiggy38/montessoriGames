@@ -157,7 +157,8 @@ class DbOperation
         $query = "SELECT id, name, description, game_type, age_range, skill_developped, how_to_play, materials_needed, difficulty_score ";
         $query .= "FROM games ";
         $query .= "WHERE min_age <= ? ";
-        $query .= ($max_age>0) ? "OR max_age >= ?" : "";
+        //$query .= ($max_age>0) ? " OR max_age >= ?" : "";
+        $query .= " OR (max_age > 0 AND max_age >= ?) OR (max_age = 0 AND max_age <= ?)";
         $stmt = $this->conn->prepare($query);
 
         if (!$stmt) {
@@ -307,27 +308,23 @@ class DbOperation
     }
     
     function updateData($game) {
-        echo '1';
+
         // Prepare the update statement
         if($game['id']!=null) {
             $query = "UPDATE games SET name = ?, description = ?, game_type = ?, min_age = ?, max_age = ?, age_range = ?, skill_developped = ?, how_to_play = ?, materials_needed = ?, difficulty_score = ? WHERE id = ?";
         }
         else{
             $query = "INSERT INTO games (name, description, game_type, min_age, max_age, age_range, skill_developped, how_to_play, materials_needed, difficulty_score)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-            echo '2';        
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";       
         }
         
-    
-echo '3';
         // Bind parameters
         $stmt = $this->conn->prepare($query);
 
-        echo '4';
         if (!$stmt->bind_param("sssiissssii", $game['name'], $game['description'], $game['game_type'], $game['min_age'], $game['max_age'], $game['age_range'], $game['skill_developped'], $game['how_to_play'], $game['materials_needed'], $game['difficulty_score'], $game['id'])) {
             die("Error binding parameters: " . $stmt->error);
         }
-echo '5';
+
         // Execute the statement
         if ($stmt->execute()) {
             echo '6';
